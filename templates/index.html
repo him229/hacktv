@@ -1,0 +1,25 @@
+<html>
+
+<head>
+  <title>Texas A&M Library</title>
+  <script type="text/javascript" src="{{ url_for('static', filename='d3.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='d3.layout.cloud.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='d3.wordcloud.js') }}"></script>
+</head>
+
+<body>
+  <div id='wordcloud'></div>
+  <script>
+    var words = ["soylent", "chai", "caffeine", "meal", "replacement", "ready", "drink", "protein", "nutrition", "laptop", "tv", "library", "too hot gg ghgggg gvgff ggfy", "loud"]
+      .map(function (d) {
+        return { text: d, size: 10 + Math.random() * 90 };
+      });
+    d3.wordcloud()
+      .size([1200, 600])
+      .selector('#wordcloud')
+      .words(words)
+      .start();
+  </script>
+</body>
+
+</html>
