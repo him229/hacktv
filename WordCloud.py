@@ -15,14 +15,14 @@ def analyze(msg):
 
 class WordCloud(object):
     def __init__(self):
-        self.count = LRU(50)
-        self.emotion = LRU(50)
-        self.color = {'happy':'#f44242', 'sad': '#4141f4', 'neutral': '#41f476'}
+        self.count = LRU(100)
+        self.emotion = LRU(100)
+        self.color = {'sad':'#f44242', 'neutral': '#4141f4', 'happy': '#41f476'}
 
     def handle_message(self, msg):
         lower_msg = msg.lower()
         if not (lower_msg in self.count):
-            self.count[lower_msg] = 0
+            self.count[lower_msg] = 5
         self.count[lower_msg] += 1
         emo = analyze(lower_msg)
         self.emotion[lower_msg] = self.color[analyze(lower_msg)]

@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request, render_template
+from flask import Flask, jsonify, request, render_template, redirect, url_for
 import json
 from collections import Counter
 from WordCloud import WordCloud
@@ -19,13 +19,15 @@ def get_msg():
 @app.route('/wordcloud', methods=['GET'])
 def get_wordcloud():
     global wc
-    return wc.get_count()
-
+    return render_template("index.html", words_json=wc.get_count())
 
 @app.route('/')
 def index():
-    return render_template("index.html")
+    context = [{"text": "soylent", "size": 50}, {"text": "himank", "size": 20}, {"text": "sorry", "size": 40}, {"text": "beautiful", "size": 80}]
+    context = json.dumps(context)
+    print context
+    return render_template("index.html", words_json=context)
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)

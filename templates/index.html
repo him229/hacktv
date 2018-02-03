@@ -10,15 +10,29 @@
 <body>
   <div id='wordcloud'></div>
   <script>
-    var words = ["soylent", "chai", "caffeine", "meal", "replacement", "ready", "drink", "protein", "nutrition", "laptop", "tv", "library", "too hot gg ghgggg gvgff ggfy", "loud"]
-      .map(function (d) {
-        return { text: d, size: 10 + Math.random() * 90 };
-      });
+    function fillColor(d, i) {
+      console.log(d, i);
+      return d.color;
+    }
+
+    var word_list = {{ words_json | safe }};
+    var colors = {}
+    for(var i = 0; i < word_list.length; ++i){
+      colors[word_list[i].text] = word_list[i].color;
+    }
+    console.log(word_list)
     d3.wordcloud()
       .size([1200, 600])
       .selector('#wordcloud')
-      .words(words)
+      .words(word_list)
+      .fill(function(i) {
+        return colors[i];
+      })
       .start();
+/*
+    setTimeout(function () {
+      window.location.reload(1);
+    }, 5000);     */ 
   </script>
 </body>
 
