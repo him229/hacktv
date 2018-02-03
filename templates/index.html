@@ -10,12 +10,12 @@
 <body>
   <div id='wordcloud'></div>
   <script>
-    var words = ["soylent", "chai", "caffeine", "meal", "replacement", "ready", "drink", "protein", "nutrition", "laptop", "tv", "library", "too hot", "loud"]
+    var words = ["soylent", "chai", "caffeine", "meal", "replacement", "ready", "drink", "protein", "nutrition", "laptop", "tv", "library", "too hot gg ghgggg gvgff ggfy", "loud"]
       .map(function (d) {
         return { text: d, size: 10 + Math.random() * 90 };
       });
     d3.wordcloud()
-      .size([800, 400])
+      .size([1200, 600])
       .selector('#wordcloud')
       .words(words)
       .start();
