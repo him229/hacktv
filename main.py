@@ -19,7 +19,9 @@ def get_msg():
 @app.route('/wordcloud', methods=['GET'])
 def get_wordcloud():
     global wc
-    return render_template("index.html", words_json=wc.get_count())
+    res = wc.get_count()
+    print res
+    return render_template("index.html", words_json=res)
 
 @app.route('/')
 def index():

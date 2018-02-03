@@ -58,7 +58,7 @@
     function init() {
       layout
         .fontSize(function(d) {
-          return fontSize(+d.size);
+          return d.size;
         })
         .text(function(d) {
           return d.text;
@@ -68,8 +68,8 @@
       svg = element.append("svg");
       vis = svg.append("g").attr("transform", "translate(" + [layout.size()[0] >> 1, layout.size()[1] >> 1] + ")");
 
-      update();
-      svg.on('resize', function() { update() });
+      //update();
+      //svg.on('resize', function() { update() });
     }
 
     function draw(data, bounds) {
@@ -121,6 +121,9 @@
         .style("cursor", function(d, i) {
           if (onwordclick !== undefined) return 'pointer';
         })
+        .fontSize(function(d){
+          return d.size;
+        })
         .on("mouseover", function(d, i) {
           if (onwordclick !== undefined) {
             d3.select(this).transition().style('font-size', d.size + 3 + 'px');
@@ -141,12 +144,15 @@
         .attr("transform", "translate(" + [w >> 1, h >> 1] + ")scale(" + scaling + ")");
     };
 
+    
     function update() {
+      /*
       var words = layout.words();
       fontSize = d3.scale[scale]().range([10, 100]);
-      if (words.length) {
+     if (words.length) {
         fontSize.domain([+words[words.length - 1].size || 1, +words[0].size]);
       }
+      */
     }
 
     return d3.rebind(wordcloud, layout, 'on', 'words', 'size', 'font', 'fontStyle', 'fontWeight', 'spiral', 'padding');
