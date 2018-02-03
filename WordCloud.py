@@ -16,7 +16,7 @@ class WordCloud(object):
     def __init__(self):
         self.count = Counter()
         self.emotion = {}
-        self.color = {'happy':'#f44242', 'sad': '#4141f4', 'neutral': '#41f476'}
+        self.color = {'sad':'#f44242', 'neutral': '#4141f4', 'happy': '#41f476'}
 
     def handle_message(self, msg):
         lower_msg = msg.lower()
