@@ -5,8 +5,8 @@ class Sentiment(object):
     def analyze(self, msg):
         analysis = TextBlob(msg)
         if analysis.sentiment.polarity > 0:
-            return 1
+            return 'happy'
         elif analysis.sentiment.polarity == 0:
-            return 0
+            return 'neutral'
         else:
-            return -1
+            return 'sad'

@@ -12,8 +12,14 @@ wc = WordCloud()
 def get_msg():
     global wc
     msg = request.form['Body']
-    wc.handle_message(wc)
-    return request.form['Body']
+    print msg
+    wc.handle_message(msg)
+    return msg
+
+@app.route('/wordcloud', methods=['GET'])
+def get_wordcloud():
+    global wc
+    return wc.get_count()
 
 
 @app.route('/')
