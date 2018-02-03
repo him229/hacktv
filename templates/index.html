@@ -1,7 +1,7 @@
 <html>
 
 <head>
-  <title>Word Cloud</title>
+  <title>Texas A&M Library</title>
   <script type="text/javascript" src="{{ url_for('static', filename='d3.js') }}"></script>
   <script type="text/javascript" src="{{ url_for('static', filename='d3.layout.cloud.js') }}"></script>
   <script type="text/javascript" src="{{ url_for('static', filename='d3.wordcloud.js') }}"></script>
@@ -10,10 +10,14 @@
 <body>
   <div id='wordcloud'></div>
   <script>
+    var words = ["soylent", "chai", "caffeine", "meal", "replacement", "ready", "drink", "protein", "nutrition", "laptop", "tv", "library", "too hot", "loud"]
+      .map(function (d) {
+        return { text: d, size: 10 + Math.random() * 90 };
+      });
     d3.wordcloud()
       .size([800, 400])
       .selector('#wordcloud')
-      .words([{ text: 'word', size: 5 }, { text: 'cloud', size: 15 }])
+      .words(words)
       .start();
   </script>
 </body>
